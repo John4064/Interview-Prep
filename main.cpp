@@ -74,10 +74,102 @@ void runBinary(){
 
 }
 
+class Node{
+    public:
+        Node* next;
+        std::string value;
+        Node(std::string input){
+            value=input;
+            next= nullptr;
+        }
+};
+class LinkedList{
+    public:
+        Node* head;
 
+        LinkedList(){
+            head = nullptr;
+        }
 
-int main() {
+        /**
+        * @param: a single linked list
+        * @brief: This function reverses a linked list
+        */
+        void reverseLL(){
+            Node* current = head;
+            Node* prev = nullptr;
+            Node* next = nullptr;
+            while(current != nullptr){
+                next = current->next;
+                current->next = prev;
+                prev = current;
+                current = next;
+            }
+            head = prev;
+        }
+        void printL(){
+            Node* temp = head;
+            while(temp != nullptr){
+                cout << temp->value << ' ';
+                temp= temp->next;
+            }
+        }
+
+        void revLL(){
+            Node* prev = nullptr;
+            Node* current = head;
+            Node* next = nullptr;
+
+            while (current != nullptr){
+                next=current->next;
+                current->next = prev;
+                prev=current;
+                current = next;
+            }
+            head= prev;
+        }
+};
+//Just a test function to test our reverse linkedlist
+void testReverse(){
     //Linked Lists
+    LinkedList ll;
+    Node n1 = Node("ABC");
+    Node n2 = Node("DEF");
+    Node n3 = Node("GHI");
+    Node n4 = Node("JKL");
+    Node n5 = Node("MNO");
+    ll.head = &n1;
+    n1.next = &n2;
+    n2.next = &n3;
+    n3.next = &n4;
+    n4.next = &n5;
+    ll.reverseLL();
+    ll.printL();
 
+}
+
+void mergeSort(int* myArr,int size){
+
+    for(int i =0;i <size;i++){
+        for(int k = i+1;k<size+1;k++){
+            if(myArr[i]>myArr[k]){
+                int temp = myArr[i];
+                myArr[i]=myArr[k];
+                myArr[k]=temp;
+            }
+        }
+    }
+    return;
+}
+void printArr(int arr[],int size){
+    for(int i =0;i < size; i++){
+        cout << arr[i] << ' ';
+    }
+}
+int main() {
+    int myArr[] = {4,5,3,1,6,6,3,0,-2,13,3,4};
+    mergeSort(myArr,12);
+    printArr(myArr,12);
+    cout << '\n';
     return 0;
 }
