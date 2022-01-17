@@ -115,24 +115,30 @@ class LinkedList{
             }
         }
 
-        void revLL(){
-            Node* prev = nullptr;
-            Node* current = head;
-            Node* next = nullptr;
+        void add(std::string data){
+            if(head == nullptr){
+                Node n1 = Node(data);
+                head=&n1;
+            }else{
+                //Linked LIst Appendd
+                Node* temp = head;
+                //BUGGY AF
+                while(temp->next != nullptr){
+                    temp = temp->next;
+                    cout <<"CRASH";
+                }
+                Node newNod = Node(data);
+                temp->next = &newNod;
 
-            while (current != nullptr){
-                next=current->next;
-                current->next = prev;
-                prev=current;
-                current = next;
             }
-            head= prev;
+            //printL();
         }
 };
 //Just a test function to test our reverse linkedlist
 void testReverse(){
     //Linked Lists
     LinkedList ll;
+    /*
     Node n1 = Node("ABC");
     Node n2 = Node("DEF");
     Node n3 = Node("GHI");
@@ -143,7 +149,13 @@ void testReverse(){
     n2.next = &n3;
     n3.next = &n4;
     n4.next = &n5;
-    ll.reverseLL();
+     */
+    ll.add("ABC");
+    ll.add("DEF");
+    //ll.add("GHI");
+    //ll.add("JKL");
+    //ll.add("MNO");
+    //ll.reverseLL();
     ll.printL();
 
 }
@@ -211,6 +223,7 @@ void testSorts(){
 }
 
 int main() {
+    testReverse();
     cout << '\n';
     return 0;
 }
