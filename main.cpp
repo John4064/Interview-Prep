@@ -1,7 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-//#include <mutex>
+#include <mutex>
 using namespace std;
 struct args{
     int* greg;
@@ -148,7 +148,7 @@ void testReverse(){
 
 }
 
-void mergeSort(int* myArr,int size){
+void selecSort(int* myArr,int size){
 
     for(int i =0;i <size;i++){
         for(int k = i+1;k<size+1;k++){
@@ -161,15 +161,56 @@ void mergeSort(int* myArr,int size){
     }
     return;
 }
+
+void bubbleSort(int* arr, int size){
+    for(int i = 0; i < size-1; i++){
+        for(int j = 0; j < size-i-1; j++){
+            if(arr[j]>arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1]=temp;
+            }
+        }
+    }
+}
+
+
+int* merge(int* arr,int size, int left, int mid){
+    return arr;
+}
+int* mergeSort(int* arr, int size, int left){
+    int right = size;
+    int middle = (right-left)/2;
+    //first half
+
+    //second half
+
+    //merge the two
+
+    return arr;
+}
+
 void printArr(int arr[],int size){
     for(int i =0;i < size; i++){
         cout << arr[i] << ' ';
     }
 }
+
+void testSorts(){
+    int myArr[] = {4,5,9,1,6,6,55,0,-2,183,3,21,4,5,4,1,61,2,73,32,-22,13,13,241,4,5,92,13,64,66,33,10,-32,143,5,21};
+    auto start = chrono::high_resolution_clock::now();
+    //bubbleSort(myArr,24);
+    int* testArr;
+    //testArr = mergeSort(myArr, 36,0);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop-start);
+    printArr(myArr,36);
+    //*.000001 for seconds
+    cout << "\nThe Execution Time for it was "<< duration.count() << " microSeconds"<<std::endl;
+
+}
+
 int main() {
-    int myArr[] = {4,5,3,1,6,6,3,0,-2,13,3,4};
-    mergeSort(myArr,12);
-    printArr(myArr,12);
     cout << '\n';
     return 0;
 }
