@@ -116,22 +116,22 @@ class LinkedList{
         }
 
         void add(std::string data){
+            Node n1 = Node(data);
             if(head == nullptr){
-                Node n1 = Node(data);
+
                 head=&n1;
             }else{
                 //Linked LIst Appendd
                 Node* temp = head;
                 //BUGGY AF
-                while(temp->next != nullptr){
+                while(temp->next) {
                     temp = temp->next;
-                    cout <<"CRASH";
+                    cout << "CRASH";
                 }
-                Node newNod = Node(data);
-                temp->next = &newNod;
+                temp->next = &n1;
 
             }
-            //printL();
+            printL();
         }
 };
 //Just a test function to test our reverse linkedlist
